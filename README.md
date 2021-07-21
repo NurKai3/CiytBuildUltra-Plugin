@@ -1,5 +1,7 @@
 # CiytBuildUltra-Plugin
 
+Its not the best code but its also not the worst ;)
+
 Check it on SpigotMC: https://www.spigotmc.org/resources/citybuild-ultra-best-free-citybuild-plugin-%E2%9C%94%EF%B8%8F-opensource-and-economy-system.94522/ 
 
 

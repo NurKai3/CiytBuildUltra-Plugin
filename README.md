@@ -1,6 +1,6 @@
 # CiytBuildUltra-Plugin
 
-Check it on SpigotMC: 
+Check it on SpigotMC: https://www.spigotmc.org/resources/citybuild-ultra-best-free-citybuild-plugin-%E2%9C%94%EF%B8%8F-opensource-and-economy-system.94522/ 
 
 
 CityBuildUltra is a 100% configurable plugin you can set every single permission, sound, pitch, message there is, since it is also open source you can customize it to your liking. A Config.yml would be much too big so I decided to make a separate .YML for each command or event. As you can see here:

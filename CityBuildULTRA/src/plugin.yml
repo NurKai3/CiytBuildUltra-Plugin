@@ -1,0 +1,21 @@
+name: CityBuildUltra
+version: 1.0
+author: snap20lp
+commands:
+  day:
+  fire:
+  heal:
+  night:
+  gm:
+    aliases: [ gamemode, Gamemode ]
+  setspawn:
+  money:
+    aliases:
+      - geld
+      - coins
+      - moneten
+  pay:
+  spawn:
+  fly:
+
+main: de.snap20lp.citybuildultra.main.Main

@@ -1,0 +1,60 @@
+#CityBuildULTRA programmed with <3 by snap20lp
+#Ist diese Datei mit Â gefüllt dann musst du diese yml in UTF-8 oder ANSI konvertieren. Probiere es aus!
+
+#Hier noch einige links die zum configurieren des Plugins helfen können:
+
+#https://www.spigotmc.org/wiki/cc-sounds-list/ - Damit du Sounds richtig einsetzen kannst. !Achtung die grünen sounds sind die die du brauchst!
+#https://www.digminecraft.com/lists/color_list_pc.php - Damit du Farben richtig einstezen kannst. !Achtung das '§' ist sehr sehr wichtig benutze kein '&'
+
+#Wenn du einige klassen öffnest wirst du vermutlich diese zeichen sehen: '\xa77' das ist im grundegenommen '§7'
+#Stelle die Dateikonvertierung auf ANSII damit du auch '§7' anstatt '/xa77' eingeben kannst!
+
+# Achtung: Colorcodes werden hier mit einem § (SHIFT+3) gekennzeichnet. Das soll mir etwas die
+# Programmierarbeit erleichtern ;)
+
+prefix: '§aCityBuild §8x '
+commandnotfound:
+  message: '§7Der Command §8[§c%COMMAND%§8] §7wurde §cnicht §7gefunden!'
+  enabled: true
+  sound:
+    pitch: 1
+    sound: ANVIL_LAND
+    enabled: true
+noperms:
+  message:
+    enabled: true
+    message: '§7Du hast dafür §ckeine §7Rechte'
+  sound:
+    pitch: 1
+    sound: ANVIL_LAND
+    enabled: true
+
+#Commands
+
+heal:
+  enabled: true
+day:
+  enabled: true
+night:
+  enabled: true
+fire:
+  enabled: true
+gamemode:
+  enabled: true
+money:
+  enabled: true
+pay:
+  enabled: true
+spawn:
+  enabled: true
+fly:
+  enabled: true
+
+#MySQL - Money System
+
+host: 'localhost'
+port: '3306'
+user: 'CityBuildULTRA'
+database: 'CityBuildULTRA'
+password: '123'
+

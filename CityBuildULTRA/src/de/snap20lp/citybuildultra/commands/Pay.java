@@ -38,17 +38,30 @@ public class Pay implements CommandExecutor {
             try {
                 if (!(Integer.parseInt(strings[1]) > 0)) {
                     player.sendMessage(Main.getInstance().getPrefix() + Main.getInstance().getFileManager().getPayYML().getString("messages.commands.pay.notnumber.message"));
-                    player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                    if(Main.getInstance().getServerVersion().contains("1.8")) {
+                        player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                    } else if(Main.getInstance().getServerVersion().contains("1.17")) {
+                        player.playSound(player.getLocation(), Sound.valueOf("BLOCK_ANVIL_LAND"), 100, 1);
+                    }
                     return false;
                 } else {
                     if (Main.getInstance().getFileManager().getPayYML().getBoolean("messages.commands.pay.self.preparing.message.enabled")) {
                         player.sendMessage(Main.getInstance().getPrefix() + Main.getInstance().getFileManager().getPayYML().getString("messages.commands.pay.self.preparing.message.message"));
-                        player.playSound(player.getLocation(), Sound.ORB_PICKUP, 100, 1);
+                        if(Main.getInstance().getServerVersion().contains("1.8")) {
+                            player.playSound(player.getLocation(), Sound.ORB_PICKUP, 100, 1);
+                        } else if(Main.getInstance().getServerVersion().contains("1.17")) {
+                            player.playSound(player.getLocation(), Sound.valueOf("ENTITY_EXPERIENCE_ORB_PICKUP"), 100, 1);
+                        }
                     }
                 }
             } catch (Exception e) {
                 player.sendMessage(Main.getInstance().getPrefix() + Main.getInstance().getFileManager().getPayYML().getString("messages.commands.pay.notnumber.message"));
-                player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                if(Main.getInstance().getServerVersion().contains("1.8")) {
+                    player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                } else if(Main.getInstance().getServerVersion().contains("1.17")) {
+                    player.playSound(player.getLocation(), Sound.valueOf("BLOCK_ANVIL_LAND"), 100, 1);
+                }
+
                 return false;
             }
 
@@ -91,7 +104,11 @@ public class Pay implements CommandExecutor {
                     }
                 } catch (NumberFormatException e) {
                     player.sendMessage(Main.getInstance().getPrefix() + Main.getInstance().getFileManager().getPayYML().getString("messages.commands.pay.notnumber.message"));
-                    player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                    if(Main.getInstance().getServerVersion().contains("1.8")) {
+                        player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                    } else if(Main.getInstance().getServerVersion().contains("1.17")) {
+                        player.playSound(player.getLocation(), Sound.valueOf("BLOCK_ANVIL_LAND"), 100, 1);
+                    }
                     return false;
                 }
                 Player target = null;

@@ -34,11 +34,19 @@ public class SetSpawn implements CommandExecutor {
                 FileConfiguration cfg = Main.getInstance().getFileManager().getSpawnsYML();
                 cfg.set("main.spawn.location", player.getLocation());
                 try {
-                    cfg.save(FileManager.getSpawnsFile());
-                    player.playSound(player.getLocation(), Sound.LEVEL_UP, 100, 1);
+                    cfg.save(Main.getInstance().getFileManager().getSpawnsFile());
+                    if(Main.getInstance().getServerVersion().contains("1.8")) {
+                        player.playSound(player.getLocation(), Sound.LEVEL_UP, 100, 1);
+                    } else if(Main.getInstance().getServerVersion().contains("1.17")) {
+                        player.playSound(player.getLocation(), Sound.valueOf("ENTITY_PLAYER_LEVELUP"), 100, 1);
+                    }
                     player.sendMessage(Main.getInstance().getPrefix() + "§7Der Spawnpunkt wurde §aerfolgreich§7 gesetzt!");
                 } catch (IOException e) {
-                    player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                    if(Main.getInstance().getServerVersion().contains("1.8")) {
+                        player.playSound(player.getLocation(), Sound.ANVIL_LAND, 100, 1);
+                    } else if(Main.getInstance().getServerVersion().contains("1.17")) {
+                        player.playSound(player.getLocation(), Sound.valueOf("BLOCK_ANVIL_LAND"), 100, 1);
+                    }
                     player.sendMessage(Main.getInstance().getPrefix() + "§7Der Spawnpunkt konnte §cnicht §7gesetzt werden! §cNicht genug Speicherplatz?");
                 }
             } else {

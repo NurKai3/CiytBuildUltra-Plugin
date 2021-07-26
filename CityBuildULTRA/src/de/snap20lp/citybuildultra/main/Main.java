@@ -26,7 +26,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Main extends JavaPlugin {
 
@@ -36,7 +35,11 @@ public class Main extends JavaPlugin {
 
     private UUIDFetcher uuidFetcher;
     private VerifyUtil verifyUtil;
+    private String serverVersion;
 
+    public String getServerVersion() {
+        return serverVersion;
+    }
 
     public static Main getInstance() {
         return getPlugin(Main.class);
@@ -98,8 +101,10 @@ public class Main extends JavaPlugin {
     }
 
     public String getVersion() {
-        return "2021.0.1";
+        return "2021.0.2";
     }
+
+
 
     public VerifyUtil getVerifyUtil() {
         return verifyUtil;
@@ -111,47 +116,46 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (!Bukkit.getOnlineMode()) {
-            Bukkit.getConsoleSender().sendMessage("§cCityBuildULTRA Funktioniert nur im Online mode!");
-        }
-        getConfig().options().copyDefaults(true);
-        saveDefaultConfig();
-        Bukkit.getConsoleSender().sendMessage("\n");
-        Bukkit.getConsoleSender().sendMessage("§8[§c§lSystem§8] §7Verbinde zu MySQL Datenbank...");
-        mySQL = new MySQL();
-        if (!mySQL.isIsconnected()) {
-            Bukkit.getConsoleSender().sendMessage("§8[§c§lSystem§8] §cMySQL Datenbank konnte nicht erreicht werden (Falsches Passwort?). Shutdown...");
-            onDisable();
-            return;
-        }
-        verifyUtil = new VerifyUtil();
-        if (verifyUtil.isInstanceGranted()) {
-            Bukkit.getConsoleSender().sendMessage("§8[§c§lModule loader§8] §7Instanziiere Klassen...");
-            fileManager = new FileManager();
-            fileManager.createFiles();
-            fileManager.initConfigHeal();
-            fileManager.initConfigDay();
-            fileManager.initConfigNight();
-            fileManager.initConfigFire();
-            fileManager.initConfigGamemode();
-            fileManager.initConfigJoin();
-            fileManager.initConfigMoney();
-            fileManager.initConfigPay();
-            fileManager.initConfigLeave();
-            fileManager.initConfigDeath();
-            fileManager.initConfigSpawn();
-            fileManager.initConfigFly();
-            registerCommands();
-            registerEvents(Bukkit.getPluginManager());
+            serverVersion = Bukkit.getBukkitVersion().split("-")[0];
+            Bukkit.getConsoleSender().sendMessage("\n§8[§c§lSystem§8] §7Lade CityBuildULTRA fuer §aSPIGOT-" + serverVersion);
+            getConfig().options().copyDefaults(true);
+            saveDefaultConfig();
             Bukkit.getConsoleSender().sendMessage("\n");
-            Bukkit.getConsoleSender().sendMessage("§aCityBuildULTRA");
-            Bukkit.getConsoleSender().sendMessage("§eVersion " + getVersion());
-            Bukkit.getConsoleSender().sendMessage("§7AccessToken §a" + getLicence() + "\n");
-            Bukkit.getConsoleSender().sendMessage("§aCityBuildULTRA " + getVersion() + " §7erfolgreich gestartet! §8| §7Verbunden mit Server: §5§lEUW-" + "none" + "\n");
-            uuidFetcher = new UUIDFetcher();
-        } else {
+            Bukkit.getConsoleSender().sendMessage("§8[§c§lSystem§8] §7Verbinde zu MySQL Datenbank...");
+            mySQL = new MySQL();
+            if (!mySQL.isIsconnected()) {
+                Bukkit.getConsoleSender().sendMessage("§8[§c§lSystem§8] §cMySQL Datenbank konnte nicht erreicht werden (Falsches Passwort?). Shutdown...");
+                onDisable();
+                return;
+            }
+            verifyUtil = new VerifyUtil();
+            if (verifyUtil.isInstanceGranted()) {
+                Bukkit.getConsoleSender().sendMessage("§8[§c§lModule loader§8] §7Instanziiere Klassen...");
+                fileManager = new FileManager();
+                fileManager.createFiles();
+                fileManager.initConfigHeal();
+                fileManager.initConfigDay();
+                fileManager.initConfigNight();
+                fileManager.initConfigFire();
+                fileManager.initConfigGamemode();
+                fileManager.initConfigJoin();
+                fileManager.initConfigMoney();
+                fileManager.initConfigPay();
+                fileManager.initConfigLeave();
+                fileManager.initConfigDeath();
+                fileManager.initConfigSpawn();
+                fileManager.initConfigFly();
+                registerCommands();
+                registerEvents(Bukkit.getPluginManager());
+                Bukkit.getConsoleSender().sendMessage("\n");
+                Bukkit.getConsoleSender().sendMessage("§aCityBuildULTRA");
+                Bukkit.getConsoleSender().sendMessage("§eVersion " + getVersion());
+                Bukkit.getConsoleSender().sendMessage("§7AccessToken §a" + getLicence() + "§f\n");
+                Bukkit.getConsoleSender().sendMessage("§aCityBuildULTRA " + getVersion() + " §7erfolgreich gestartet! §8| §7Verbunden mit Server: §5§lEUW-" + "none§f" + "\n");
+                uuidFetcher = new UUIDFetcher();
+            } else {
 
-        }
+            }
     }
 }
 

@@ -248,7 +248,7 @@ public class FileManager {
             cfg.addDefault("join.money.start", "500");
             cfg.addDefault("join.title.enabled", true);
             cfg.addDefault("join.title.title.1", "§8» §aWillkommen ;)");
-            cfg.addDefault("join.title.title.2", "§7Vielen Dank dass du dieses heruntergeladne hast!");
+            cfg.addDefault("join.title.title.2", "§7Vielen Dank dass du dieses Plugin heruntergeladen hast!");
             cfg.addDefault("join.sound.pitch", 1);
             cfg.addDefault("join.sound.enabled", true);
             cfg.addDefault("join.broadcast.enabled", true);
